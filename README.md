@@ -1,5 +1,5 @@
 # Welcome to nPod!
-
+Networked Passive-Infrared Occupancy Detector (nPod)
 ## Introduction to the Creators
 (Updated April 18th, 2019)
 
