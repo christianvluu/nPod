@@ -20,14 +20,20 @@ $.post("https://api.thinger.io/oauth/token", loginParams)
 .fail( data => console.log(data))
 
 
-var button = document.createElement("testButton");
-button.innerHTML = "Button";
+/*var myButton = document.createElement("myButton");
+myButton.innerHTML = "myButton";
 
 var body = document.getElementsByTagName("body")[0];
-body.appendChild(button);
+document.body.appendChild(myButton);*/
 
-button.addEventListener ("click", function() {
+function buttonClick(){
   $.get("https://api.thinger.io/v1/users/supernick125/devices/slave_1/millis()", {authorization: access_token})
     .done(data => document.write(data))//console.log(data))
     .fail(data => console.log("failure", data))
-});
+}
+/*
+myButton.addEventListener ("click", function() {
+  $.get("https://api.thinger.io/v1/users/supernick125/devices/slave_1/millis()", {authorization: access_token})
+    .done(data => document.write(data))//console.log(data))
+    .fail(data => console.log("failure", data))
+});*/
