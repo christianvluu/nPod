@@ -19,5 +19,11 @@ button:hover {
 }
 
 #buttonDiv {
+  margin: auto;
+  width: 50%;
   float: right;
+}
+
+#container {
+
 }
