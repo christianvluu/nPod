@@ -19,6 +19,7 @@ void setup() {
   wifiConnect();
 
   pinMode(sensorPin, INPUT);
+  pinMode(13, OUTPUT);
 
   LIB_FLR0_POD_1["isMotion"] >> outputValue(isMotion()); //returns the 'calculated' vacant/present state with bufferTime
 
@@ -35,6 +36,7 @@ void loop() {
     wifiConnect();
   }
   slave_1.handle();
+  lightLED();
 }
 
 boolean isMotion(){
@@ -71,6 +73,14 @@ long timeSinceMotion(){ //UNFINISHED
 
 
 
+}
+
+void lightLED(){
+  if(roomFull){
+    digitalWrite(13, HIGH);
+  }else{
+    digitalWrite(13,LOW);
+  }
 }
 
 void wifiConnect(){
