@@ -7,10 +7,12 @@ int sensorPin = 2;
 int pirState = LOW;
 boolean roomFull = false;
 int val = 0;
-int bufferTime = 10000;
+int bufferTime = 10000; //in milliseconds
 unsigned long lastMotion;
+long timeSinceMotion = 0;
+long timeAtMotionStart;
 
-ThingerWiFiNINA slave_1("supernick125", "slave_1", "lK304w%k%7BU"); //CHANGE ACCOUNT AND ID LATER
+ThingerWiFiNINA LIB_FLR0_POD_1("supernick125", "slave_1", "lK304w%k%7BU"); //CHANGE ACCOUNT AND ID LATER
 
 void setup() {
 
@@ -18,9 +20,13 @@ void setup() {
 
   pinMode(sensorPin, INPUT);
 
-  slave_1["isMotion"] >> outputValue(isMotion());
+  LIB_FLR0_POD_1["isMotion"] >> outputValue(isMotion()); //returns the 'calculated' vacant/present state with bufferTime
 
-  slave_1["millis"] >> outputValue(millis());
+  LIB_FLR0_POD_1["millis"] >> outputValue(millis()); //returns time since Arduino bootup
+
+  LIB_FLR0_POD_1["timeSinceMotion"] >> outputValue(); //returns timeSinceMotion
+
+  LIB_FLR0_POD_1["bufferTimePost"] << inputValue(bufferTime); //allows POST from Server to change bufferTime
 
 }
 
@@ -31,15 +37,14 @@ void loop() {
   slave_1.handle();
 }
 
-boolean isMotion(){ //ADD COMMENTS
+boolean isMotion(){
+  val = digitalRead(sensorPin); //raw output from sensor
 
-  val = digitalRead(sensorPin); //output from sensor
-
-if((millis() - lastMotion) <= bufferTime){ //resets lastMotion
-  if(val == HIGH){
-    lastMotion = millis();
+  if((millis() - lastMotion) <= bufferTime){ //resets lastMotion
+    if(val == HIGH){
+      lastMotion = millis();
+    }
   }
-}
 
 if((val == HIGH) || ((millis() - lastMotion) <= bufferTime)){
     roomFull = true;
@@ -57,9 +62,17 @@ if((val == HIGH) || ((millis() - lastMotion) <= bufferTime)){
     }
     return roomFull;
   }
+}
+
+long timeSinceMotion(){ //UNFINISHED
+  if (roomFull == true){
+    timeAtMotionStart = millis();
+  }
+
+
 
 }
 
 void wifiConnect(){
-  slave_1.add_wifi(SSID, SSID_PASSWORD);
+  LIB_FLR0_POD_1.add_wifi(SSID, SSID_PASSWORD);
 }
