@@ -7,7 +7,7 @@ h1 {
   margin-left: 20px;
 }
 
-button {
+testButton {
   margin-top: 20px;
   line-height: 60px;
   font-weight: bold;
@@ -15,6 +15,7 @@ button {
   background: salmon;
   border: none;
 }
+
 button:hover {
   background: lightsalmon;
 }
