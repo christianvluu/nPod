@@ -35,7 +35,7 @@ void loop() {
   if(WiFi.status() != WL_CONNECTED){
     wifiConnect();
   }
-  slave_1.handle();
+  LIB_FLR0_POD_1.handle();
   lightLED();
 }
 
