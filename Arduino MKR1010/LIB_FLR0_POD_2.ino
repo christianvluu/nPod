@@ -11,6 +11,7 @@ int bufferTime = 10000; //in milliseconds
 unsigned long lastMotion;
 long timeSinceMotion = 0;
 long timeAtMotionStart;
+boolean timeSinceMotionFlag = true;
 
 ThingerWiFiNINA LIB_FLR0_POD_2("supernick125", "slave_2", "lK304w%k%7BU"); //CHANGE ACCOUNT AND ID LATER
 
@@ -47,31 +48,27 @@ boolean isMotion(){
       lastMotion = millis();
     }
   }
-
-if((val == HIGH) || ((millis() - lastMotion) <= bufferTime)){
-    roomFull = true;
-    if(pirState == LOW){
-      Serial.println("Motion detected");
-      pirState = HIGH;
-      lastMotion = millis();
-    }
-    return roomFull;
-  }else{
-    roomFull = false;
-    if(pirState == HIGH){
-      Serial.println("Motion ended");
-      pirState = LOW;
-    }
-    return roomFull;
+  if((val == HIGH) || ((millis() - lastMotion) <= bufferTime)){
+      roomFull = true;
+      if(pirState == LOW){
+        Serial.println("Motion detected");
+        pirState = HIGH;
+        lastMotion = millis();
+        timeSinceMotionFlag = true;
+      }
   }
+  else{
+      roomFull = false;
+      if(pirState == HIGH){
+        Serial.println("Motion ended");
+        pirState = LOW;
+      }
+      timeSinceMotionFlag = false;
+  }
+  return roomFull;
 }
 
 long timeSinceMotion(){ //UNFINISHED
-  if (roomFull == true){
-    timeAtMotionStart = millis();
-  }
-
-
 
 }
 
