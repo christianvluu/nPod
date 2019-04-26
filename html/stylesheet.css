@@ -19,9 +19,19 @@ button:hover {
 }
 
 #buttonDiv {
+  margin: auto;
+  width: 60%;
   float: right;
 } */
 
 .floor_plan {
   width:600px;
+}
+
+#container {
+
+}
+
+.center {
+  text-align:
 }
