@@ -21,7 +21,7 @@ int bufferTime = 10000; //milliseconds buffer
 unsigned long lastMotion; //reset variable
 
 //create Thinger device object
-ThingerWiFiNINA LIB_FLR0_POD_2("nPod", "LIB_FLR0_POD_2", "CREDENTIALS_LIB_FLR0_POD_2"); //CHANGE ACCOUNT AND ID LATER
+ThingerWiFiNINA LIB_FLR0_POD_2("npod", "LIB_FLR0_POD_2", "CREDENTIALS_LIB_FLR0_POD_2"); //CHANGE ACCOUNT AND ID LATER
 
 void setup() {
 
@@ -46,6 +46,9 @@ void loop() {
   }
 
   LIB_FLR0_POD_2.handle(); //handles all device parameters
+  
+  isMotion();
+  lightLED();
 }
 
 boolean isMotion(){
