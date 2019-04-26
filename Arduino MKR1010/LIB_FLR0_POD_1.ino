@@ -1,42 +1,51 @@
 #include <ThingerWiFiNINA.h>
 
+/*
+ * nPod 2019
+ * Christian Luu and Nick Healy
+ */
+
+//WiFi credentials
 #define SSID "LVproj"
 #define SSID_PASSWORD "18101810"
 
-int sensorPin = 2;
-int pirState = LOW;
-boolean roomFull = false;
-int val = 0;
-int bufferTime = 10000; //in milliseconds
-unsigned long lastMotion;
-long timeSinceMotion = 0;
-long timeAtMotionStart;
+//variable declaration
+int sensorPin = 2; //pir sensor pin
 
-ThingerWiFiNINA LIB_FLR0_POD_1("supernick125", "slave_1", "lK304w%k%7BU"); //CHANGE ACCOUNT AND ID LATER
+int val = LOW; //raw sensor value
+int pirState = LOW; //flag variable
+
+boolean roomFull = false; //calculated vacancy
+
+int bufferTime = 10000; //milliseconds buffer
+unsigned long lastMotion; //reset variable
+
+//create Thinger device object
+ThingerWiFiNINA LIB_FLR0_POD_1("nPod", "LIB_FLR0_POD_1", "CREDENTIALS_LIB_FLR0_POD_1"); //CHANGE ACCOUNT AND ID LATER
 
 void setup() {
 
-  wifiConnect();
+  wifiConnect(); //initial WiFi connection
 
+  //pin setup
   pinMode(sensorPin, INPUT);
-  pinMode(13, OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
+
 
   LIB_FLR0_POD_1["isMotion"] >> outputValue(isMotion()); //returns the 'calculated' vacant/present state with bufferTime
-
   LIB_FLR0_POD_1["millis"] >> outputValue(millis()); //returns time since Arduino bootup
+  LIB_FLR0_POD_1["LEDStatus"] >> outputValue(lightLED()); //returns LED status (raw sensor status)
 
-  LIB_FLR0_POD_1["timeSinceMotion"] >> outputValue(); //returns timeSinceMotion
-
-  LIB_FLR0_POD_1["bufferTimePost"] << inputValue(bufferTime); //allows POST from Server to change bufferTime
+  LIB_FLR0_POD_1["bufferTimePost"] << inputValue(bufferTime); //POST from Server to change bufferTime
 
 }
 
 void loop() {
-  if(WiFi.status() != WL_CONNECTED){
+  if(WiFi.status() != WL_CONNECTED){ //reconnects WiFi when disconnected
     wifiConnect();
   }
-  LIB_FLR0_POD_1.handle();
-  lightLED();
+
+  LIB_FLR0_POD_1.handle(); //handles all device parameters
 }
 
 boolean isMotion(){
@@ -47,42 +56,31 @@ boolean isMotion(){
       lastMotion = millis();
     }
   }
+  if((val == HIGH) || ((millis() - lastMotion) <= bufferTime)){
+      roomFull = true;
+      if(pirState == LOW){
+        pirState = HIGH;
+        lastMotion = millis();
+      }
+  }
+  else{
+      roomFull = false;
+      if(pirState == HIGH){
+        pirState = LOW;
+      }
+  }
+  return roomFull;
+}
 
-if((val == HIGH) || ((millis() - lastMotion) <= bufferTime)){
-    roomFull = true;
-    if(pirState == LOW){
-      Serial.println("Motion detected");
-      pirState = HIGH;
-      lastMotion = millis();
-    }
-    return roomFull;
+boolean lightLED(){ //controls built in LED based on raw sensor value
+  if(val){
+    digitalWrite(LED_BUILTIN, HIGH);
   }else{
-    roomFull = false;
-    if(pirState == HIGH){
-      Serial.println("Motion ended");
-      pirState = LOW;
-    }
-    return roomFull;
+    digitalWrite(LED_BUILTIN,LOW);
   }
+  return(val); //returns LED status
 }
 
-long timeSinceMotion(){ //UNFINISHED
-  if (roomFull == true){
-    timeAtMotionStart = millis();
-  }
-
-
-
-}
-
-void lightLED(){
-  if(roomFull){
-    digitalWrite(13, HIGH);
-  }else{
-    digitalWrite(13,LOW);
-  }
-}
-
-void wifiConnect(){
+void wifiConnect(){ //connects device to wifi
   LIB_FLR0_POD_1.add_wifi(SSID, SSID_PASSWORD);
 }
