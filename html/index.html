@@ -6,18 +6,66 @@
 
     <title>nPod</title>
 
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   </head>
 
   <body>
     <script src="script.js"></script>
-
-
+    <h1 class="text-center">nPod</h1>
+    <div class="container">
+      <h2>Bunn Library</h2>
+      <p>The official library of The Lawrenceville School.</p>
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+              First floor
+              </a>
+            </h4>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse in">
+            <img src="images/floor_plan.jpg" class="floor_plan"/>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+              Second floor</a>
+            </h4>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse">
+            <img src="images/floor_plan.jpg"/>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+              Basement</a>
+            </h4>
+          </div>
+          <div id="collapse3" class="panel-collapse collapse">
+            <img src="images/floor_plan.jpg"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--
     <div id="buttonDiv">
       <button type="button" onclick="buttonClick()">CLICK FOR MILLIS</button>
-    </div>
+    </div> -->
 
   </body>
 </html>
