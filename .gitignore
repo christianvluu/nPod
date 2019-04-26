@@ -1,3 +1,6 @@
 #github commits ignore any files listed here
 
 .config
+
+# OSX files
+.DS_Store
