@@ -1,6 +1,7 @@
 
-var username = "supernick125";
-var password = "nPod2019";
+var username ="";
+var password ="";
+
 
 var loginParams = {
   grant_type: "password",
