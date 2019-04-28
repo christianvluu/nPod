@@ -5,6 +5,13 @@
  * Christian Luu and Nick Healy
  */
 
+/*#############################
+Change per file:
+- ThingerWiFiNINA Obj at creation
+- ThingerWiFiNINA Obj at wifiConnect() reference
+- Resources Output/Input Obj reference in setup()
+#############################*/
+
 //WiFi credentials
 #define SSID "LVproj"
 #define SSID_PASSWORD "18101810"
@@ -20,8 +27,16 @@ boolean roomFull = false; //calculated vacancy
 int bufferTime = 10000; //milliseconds buffer
 unsigned long lastMotion; //reset variable
 
+double timeSinceMotion = 0;
+double timeAtMotionStart = 0;
+boolean motionToggle = true;
+
 //create Thinger device object
 ThingerWiFiNINA LIB_FLR0_POD_1("npod", "LIB_FLR0_POD_1", "CREDENTIALS_LIB_FLR0_POD_1"); //CHANGE ACCOUNT AND ID LATER
+
+void wifiConnect(){ //connects device to wifi
+  LIB_FLR0_POD_1.add_wifi(SSID, SSID_PASSWORD); //change OBJ name as necessary
+}
 
 void setup() {
 
@@ -31,12 +46,11 @@ void setup() {
   pinMode(sensorPin, INPUT);
   pinMode(LED_BUILTIN, OUTPUT);
 
-
   LIB_FLR0_POD_1["isMotion"] >> outputValue(isMotion()); //returns the 'calculated' vacant/present state with bufferTime
   LIB_FLR0_POD_1["millis"] >> outputValue(millis()); //returns time since Arduino bootup
-  LIB_FLR0_POD_1["LEDStatus"] >> outputValue(lightLED()); //returns LED status (raw sensor status)
-
+  //LIB_FLR0_POD_1["LEDStatus"] >> outputValue(lightLED()); //returns LED status (raw sensor status)
   LIB_FLR0_POD_1["bufferTimePost"] << inputValue(bufferTime); //POST from Server to change bufferTime
+  LIB_FLR0_POD_1["timeSinceMotion"] >> outputValue(getTimeSinceMotion()); //returns timeSinceMotion
 
 }
 
@@ -75,6 +89,21 @@ boolean isMotion(){
   return roomFull;
 }
 
+double getTimeSinceMotion(){ //returns timeSinceMotion
+  if (roomFull && !motionToggle){ //init timeAtMotionStart when based on roomFull var
+    timeAtMotionStart = millis();
+    motionToggle = true;
+  }
+  if (roomFull && motionToggle){ //starts reporting timeSinceMotion
+    timeSinceMotion = millis() - timeAtMotionStart;
+    return timeSinceMotion;
+  }
+  if (!roomFull){ //returns -1 when no motion
+    motionToggle = false;
+    return -1;
+  }
+}
+
 boolean lightLED(){ //controls built in LED based on raw sensor value
   if(val){
     digitalWrite(LED_BUILTIN, HIGH);
@@ -82,8 +111,4 @@ boolean lightLED(){ //controls built in LED based on raw sensor value
     digitalWrite(LED_BUILTIN,LOW);
   }
   return(val); //returns LED status
-}
-
-void wifiConnect(){ //connects device to wifi
-  LIB_FLR0_POD_1.add_wifi(SSID, SSID_PASSWORD);
 }
