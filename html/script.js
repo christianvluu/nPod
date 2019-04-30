@@ -1,6 +1,5 @@
 
-var username ="";
-var password ="";
+var username ="npod";
 
 
 var loginParams = {
