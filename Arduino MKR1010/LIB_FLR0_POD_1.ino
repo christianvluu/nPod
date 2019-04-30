@@ -17,7 +17,7 @@ Change per file:
 #define SSID_PASSWORD "18101810"
 
 //variable declaration
-int sensorPin = 2; //pir sensor pin
+int sensorPin = 5; //pir sensor pin
 
 int val = LOW; //raw sensor value
 int pirState = LOW; //flag variable
@@ -48,7 +48,7 @@ void setup() {
 
   LIB_FLR0_POD_1["isMotion"] >> outputValue(isMotion()); //returns the 'calculated' vacant/present state with bufferTime
   LIB_FLR0_POD_1["millis"] >> outputValue(millis()); //returns time since Arduino bootup
-  //LIB_FLR0_POD_1["LEDStatus"] >> outputValue(lightLED()); //returns LED status (raw sensor status)
+  LIB_FLR0_POD_1["LEDStatus"] >> outputValue(lightLED()); //returns LED status (raw sensor status)
   LIB_FLR0_POD_1["bufferTimePost"] << inputValue(bufferTime); //POST from Server to change bufferTime
   LIB_FLR0_POD_1["timeSinceMotion"] >> outputValue(getTimeSinceMotion()); //returns timeSinceMotion
 

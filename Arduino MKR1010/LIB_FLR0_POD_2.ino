@@ -17,7 +17,7 @@ Change per file:
 #define SSID_PASSWORD "18101810"
 
 //variable declaration
-int sensorPin = 2; //pir sensor pin
+int sensorPin = 5; //pir sensor pin
 
 int val = LOW; //raw sensor value
 int pirState = LOW; //flag variable
@@ -48,7 +48,7 @@ void setup() {
 
   LIB_FLR0_POD_2["isMotion"] >> outputValue(isMotion()); //returns the 'calculated' vacant/present state with bufferTime
   LIB_FLR0_POD_2["millis"] >> outputValue(millis()); //returns time since Arduino bootup
-  //LIB_FLR0_POD_2["LEDStatus"] >> outputValue(lightLED()); //returns LED status (raw sensor status)
+  LIB_FLR0_POD_2["LEDStatus"] >> outputValue(lightLED()); //returns LED status (raw sensor status)
   LIB_FLR0_POD_2["bufferTimePost"] << inputValue(bufferTime); //POST from Server to change bufferTime
   LIB_FLR0_POD_2["timeSinceMotion"] >> outputValue(getTimeSinceMotion()); //returns timeSinceMotion
 
@@ -59,7 +59,7 @@ void loop() {
     wifiConnect();
   }
 
-  LIB_FLR0_POD_1.handle(); //handles all device parameters
+  LIB_FLR0_POD_2.handle(); //handles all device parameters
 
   isMotion();
   lightLED();
