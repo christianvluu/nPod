@@ -32,7 +32,7 @@ double timeAtMotionStart = 0;
 boolean motionToggle = true;
 
 //create Thinger device object
-ThingerWiFiNINA LIB_FLR0_POD_2("npod", "LIB_FLR0_POD_1", "CREDENTIALS_LIB_FLR0_POD_1"); //CHANGE ACCOUNT AND ID LATER
+ThingerWiFiNINA LIB_FLR0_POD_2("npod", "LIB_FLR0_POD_2", "CREDENTIALS_LIB_FLR0_POD_2"); //CHANGE ACCOUNT AND ID LATER
 
 void wifiConnect(){ //connects device to wifi
   LIB_FLR0_POD_2.add_wifi(SSID, SSID_PASSWORD); //change OBJ name as necessary
