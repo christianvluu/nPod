@@ -29,7 +29,8 @@ $.post("https://api.thinger.io/oauth/token", loginParams)
 
 function getFloorTest() { //UNFINISHED
   for(i = 0; i < 2; i++) {
-    getPod(pods[i], isMotion, )
+    var id = isMotion + i;
+    getPod(pods[i], isMotion, id);
   }
 }
 

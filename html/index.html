@@ -26,8 +26,6 @@
     <script src="script.js"></script>
     <h1 class="text-center">nPod</h1>
 
-    <button type="button" onclick="getData(pod1, "millis")">click on me</button>
-
     <div class="container">
       <h2>Bunn Library</h2>
       <p>The official library of The Lawrenceville School.</p>
@@ -35,31 +33,33 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" onclick="getData(pod1, millis)">
-              First Floor
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" onclick="getFloorTest()">
+                First Floor
               </a>
             </h4>
           </div>
           <div id="collapse1" class="panel-collapse collapse in">
-            <div class="row">
-              <div class="col">
-                <h1>Pod 1</h1>
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <h1>Pod 1</h1>
+                </div>
+                <div class="col">
+                  <h1>Pod 2</h1>
+                </div>
               </div>
-              <div class="col">
-                <h1>Pod 2</h1>
+              <div class="row">
+                <div class="col">
+                  <p id="isMotion0"></p>
+                </div>
+                <div class="col">
+                  <p id="isMotion1"></p>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <p id="isMotion1"></p>
-              </div>
-              <div class="col">
-                <p id="isMotion2"></p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <img src="images/floor_plan.jpg" class="floor_plan"/>
+              <div class="row">
+                <div class="col">
+                  <img src="images/floor_plan.jpg" class="floor_plan"/>
+                </div>
               </div>
             </div>
           </div>
