@@ -1,7 +1,6 @@
 
 //shortened pod names
-const pod1 = "LIB_FLR0_POD_1";
-const pod2 = "LIB_FLR0_POD_2";
+const pods = ["LIB_FLR0_POD_1", "LIB_FLR0_POD_2"];
 
 //resource variables
 const millis = "millis";
@@ -28,9 +27,15 @@ $.post("https://api.thinger.io/oauth/token", loginParams)
 })
 .fail( data => console.log(data))
 
-function getData(device, resource){
+function getFloorTest() { //UNFINISHED
+  for(i = 0; i < 2; i++) {
+    getPod(pods[i], isMotion, )
+  }
+}
+
+function getPod(device, resource, id) {
   var url = "https://api.thinger.io/v1/users/npod/devices/" + device + "/" + resource;
   $.get(url, {authorization: access_token})
-    .done(data => document.getElementById("millis1").innerHTML = data)
+    .done(data => document.getElementById(id).innerHTML = data)
     .fail(data => console.log("failure", data))
 }
