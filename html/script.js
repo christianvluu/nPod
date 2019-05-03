@@ -1,6 +1,17 @@
 
-var username ="npod";
+//shortened pod names
+const pod1 = "LIB_FLR0_POD_1";
+const pod2 = "LIB_FLR0_POD_2";
 
+//resource variables
+const millis = "millis";
+const isMotion = "isMotion";
+
+//how many pods on floor
+const floor0 = 2;
+
+
+var username ="npod";
 
 var loginParams = {
   grant_type: "password",
@@ -8,32 +19,18 @@ var loginParams = {
   password: password
 }
 
+
 var access_token = "";
 $.post("https://api.thinger.io/oauth/token", loginParams)
 .done( data => {
   console.log(data);
   access_token = data.access_token;
-  /*$.get("https://api.thinger.io/v1/users/supernick125/devices/slave_1/millis()", {authorization: access_token})
-    .done(data => document.write(data))//console.log(data))
-    .fail(data => console.log("failure", data))*/
 })
 .fail( data => console.log(data))
 
-
-/*var myButton = document.createElement("myButton");
-myButton.innerHTML = "myButton";
-
-var body = document.getElementsByTagName("body")[0];
-document.body.appendChild(myButton);*/
-
-function buttonClick(){
-  $.get("https://api.thinger.io/v1/users/supernick125/devices/slave_1/millis()", {authorization: access_token})
-    .done(data => document.write(data))//console.log(data))
+function getData(device, resource){
+  var url = "https://api.thinger.io/v1/users/npod/devices/" + device + "/" + resource;
+  $.get(url, {authorization: access_token})
+    .done(data => document.getElementById("millis1").innerHTML = data)
     .fail(data => console.log("failure", data))
 }
-/*
-myButton.addEventListener ("click", function() {
-  $.get("https://api.thinger.io/v1/users/supernick125/devices/slave_1/millis()", {authorization: access_token})
-    .done(data => document.write(data))//console.log(data))
-    .fail(data => console.log("failure", data))
-});*/

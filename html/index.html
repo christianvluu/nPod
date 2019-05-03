@@ -18,14 +18,15 @@
     <!-- Bootstrap script -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
+    <script src="password.js"></script>
+
   </head>
 
   <body>
-    <script src="password.js"></script>
     <script src="script.js"></script>
     <h1 class="text-center">nPod</h1>
 
-    <button type="button" onclick="buttonClick()">click on me</button>
+    <button type="button" onclick="getData(pod1, "millis")">click on me</button>
 
     <div class="container">
       <h2>Bunn Library</h2>
@@ -34,12 +35,13 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" onclick="getData(pod1, millis)">
               First floor
               </a>
             </h4>
           </div>
           <div id="collapse1" class="panel-collapse collapse in">
+            <p id="millis1"></p>
             <img src="images/floor_plan.jpg" class="floor_plan"/>
           </div>
         </div>
