@@ -1,8 +1,6 @@
 
-.floor_plan {
-  width:600px;
-}
-
-.center {
-  text-align: center;
+.collapsing {
+  -webkit-transition: none;
+  transition: none;
+  display: none;
 }

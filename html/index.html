@@ -30,57 +30,35 @@
       <h2>Bunn Library</h2>
       <p>The official library of The Lawrenceville School.</p>
 
-
-
-      <div class="accordion" id="accordionTest">
-        <div class="row">
-          <div class="col text-center">
-            <div class="btn-group">
-              <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#pod1" aria-expanded="false" aria-controls="#pod1">Floor 1</button>
-              <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#pod2" aria-expanded="false" aria-controls="#pod2">Floor 2</button>
-              <button type="button" class="btn btn-primary">Basement</button>
-            </div>
+      <div class="row">
+        <div class="col text-center">
+          <div class="btn-group">
+            <button type="button" onclick="getFloorTest()" class="btn btn-primary" data-toggle="collapse" data-target="#floor1" aria-expanded="false" aria-controls="#floor1">Floor 1</button>
+            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#pod2" aria-expanded="false" aria-controls="#pod2">Floor 2</button>
+            <button type="button" class="btn btn-primary">Basement</button>
           </div>
         </div>
-
-
-        <div class="card">
-          <div id="pod1" class="collapse" aria-labelledby="heading1" data-parent="#accordionTest">
-            <div class="card-body">
-              <h1>Pod 1</h1>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div id="pod2" class="collapse" aria-labelledby="heading2" data-parent="#accordionTest">
-            <div class="card-body">
-              <h1>Pod 2</h1>
-            </div>
-          </div>
-        </div>
-
-
       </div>
 
-
-<!--
       <div class="row">
         <div class="col">
-          <div class="collapse" id="pod1">
+          <div class="collapse" id="floor1">
             <div class="card card-body">
               <h1>POD 1</h1>
+              <p id="isMotion0"></p>
+              <h1>POD 2</h1>
+              <p id="isMotion1"></p>
             </div>
           </div>
         </div>
         <div class="col">
           <div class="collapse" id="pod2">
             <div class="card card-body">
-              <h1>POD 2</h1>
+              <h1>POD 7</h1>
             </div>
           </div>
         </div>
       </div>
--->
 
     </div>
 
