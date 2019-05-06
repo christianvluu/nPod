@@ -30,14 +30,14 @@ $.post("https://api.thinger.io/oauth/token", loginParams)
 .fail( data => console.log(data))
 
 
-function getFloorTest() { //UNFINISHED
+/*function getFloorTest() {
   for(i = 0; i < 2; i++) {
     var id = isMotion + i;
     getPod(pods[i], isMotion, id);
   }
-}
+}*/
 
-function getFloor(floor) {
+function getFloor(floor) { //not done
   switch(floor) {
     case -1:
       for(i = 0; i < 3; i++) {
