@@ -27,104 +27,37 @@
     <h1 class="text-center">nPod</h1>
 
     <div class="container-fluid">
-      <h2>Bunn Library</h2>
-      <p>The official library of The Lawrenceville School.</p>
 
       <div class="row">
         <div class="col text-center">
           <div class="btn-group">
-            <button type="button" onclick="getFloorTest()" class="btn btn-primary" data-toggle="collapse" data-target="#floor1" aria-expanded="false" aria-controls="#floor1">Floor 1</button>
-            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#pod2" aria-expanded="false" aria-controls="#pod2">Floor 2</button>
-            <button type="button" class="btn btn-primary">Basement</button>
+            <button type="button" onclick="getFloor(floorB1)" class="btn btn-primary" data-toggle="collapse" data-target="#floorB1" aria-expanded="false" aria-controls="#floorB1">Basement</button>
+            <button type="button" onclick="getFloor(floor0)" class="btn btn-primary" data-toggle="collapse" data-target="#floor0" aria-expanded="false" aria-controls="#floor0">Floor 1</button>
+            <button type="button" onclick="getFloor(floor1)" class="btn btn-primary" data-toggle="collapse" data-target="#floor1" aria-expanded="false" aria-controls="#floor1">Floor 2</button>
           </div>
         </div>
       </div>
 
-      <div class="row">
+      <div class="row collapse" id="floorB1">
         <div class="col">
-          <div class="collapse" id="floor1">
-            <div class="card card-body text-center">
-              <h1>POD 1</h1>
-              <p id="isMotion0"></p>
-              <h1>POD 2</h1>
-              <p id="isMotion1"></p>
-            </div>
-          </div>
+          <h1>POD 1</h1>
+          <p id="B1pod0"></p>
+          <h1>POD 2</h1>
+          <p id="B1pod1"></p>
         </div>
         <div class="col">
-          <div class="collapse" id="pod2">
-            <div class="card card-body">
-              <h1>POD 7</h1>
-            </div>
-          </div>
+          <h1>PLACEHOLDER</h1>
         </div>
       </div>
-
-    </div>
-
-<!--
-
-      <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="false" onclick="getFloorTest()">
-                First Floor
-              </a>
-            </h4>
-          </div>
-          <div id="collapse1" class="panel-collapse collapse in">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col">
-                  <h1>Pod 1</h1>
-                </div>
-                <div class="col">
-                  <h1>Pod 2</h1>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <p id="isMotion0"></p>
-                </div>
-                <div class="col">
-                  <p id="isMotion1"></p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <img src="images/floor_plan.jpg" class="floor_plan"/>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-              Second floor</a>
-            </h4>
-          </div>
-          <div id="collapse2" class="panel-collapse collapse">
-            <img src="images/floor_plan.jpg"/>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-              Basement</a>
-            </h4>
-          </div>
-          <div id="collapse3" class="panel-collapse collapse">
-            <img src="images/floor_plan.jpg"/>
-          </div>
-        </div>
+      <div class="row collapse" id="floor0">
+        aaaaa
       </div>
-    </div>
+      <div class="row collapse" id="floor1">
+        bbbbb
+      </div>
 
--->
+
+    </div>
 
   </body>
 </html>
