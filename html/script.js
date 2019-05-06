@@ -1,13 +1,17 @@
 
 //shortened pod names
-const pods = ["LIB_FLR0_POD_1", "LIB_FLR0_POD_2"];
+const podsB1 = ["LIB_FLRB1_POD_0","LIB_FLRB1_POD_1", "LIB_FLRB1_POD_2"];
+const pods0 = ["LIB_FLR0_POD_0", "LIB_FLR0_POD_1", "LIB_FLR0_POD_2", "LIB_FLR0_POD_3"];
+const pods1 = ["LIB_FLR1_POD_0", "LIB_FLR1_POD_1", "LIB_FLR1_POD_"];
 
 //resource variables
 const millis = "millis";
 const isMotion = "isMotion";
 
 //how many pods on floor
-const floor0 = 2;
+const floorB1 = 3; //basement
+const floor0 = 4; //ground floor
+const floor1 = 6; //second floor
 
 
 var username ="npod";
