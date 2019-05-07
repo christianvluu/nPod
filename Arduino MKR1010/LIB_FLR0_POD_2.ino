@@ -14,7 +14,7 @@ Change per file:
 
 //WiFi credentials
 #define SSID "LVproj"
-#define SSID_PASSWORD "18101810"
+#define SSID_PASSWORD "XXXXXXXX"
 
 //variable declaration
 int sensorPin = 5; //pir sensor pin
