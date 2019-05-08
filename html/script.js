@@ -37,7 +37,7 @@ $.post("https://api.thinger.io/oauth/token", loginParams)
 function getPod(device, resource, id) {
   var url = "https://api.thinger.io/v1/users/npod/devices/" + device + "/" + resource;
   $.get(url, {authorization: access_token})
-    .done(data => document.getElementById(id).innerHTML = data)
+    .done(data => document.getElementById(id).innerHTML = data) //*change to use color pictures
     .fail(data => console.log("failure", data))
 }
 
