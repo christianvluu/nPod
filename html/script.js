@@ -33,16 +33,22 @@ $.post("https://api.thinger.io/oauth/token", loginParams)
 
 
 //sets square color for one pod
-function setColor() {
-
+function setColor(roomFull, id) {
+  if(roomFull){
+    document.getElementById(id).src = "images/red.jpg";
+  }else{
+    document.getElementById(id).src = "images/green.jpg";
+  }
 }
+
+//**need function to do a whole floor color
 
 //gets a resource from a single pod and fills an html element with it
 //device name, resource to get, HTML id value
 function getPod(device, resource, id) {
   var url = "https://api.thinger.io/v1/users/npod/devices/" + device + "/" + resource;
   $.get(url, {authorization: access_token})
-    .done(data => document.getElementById(id).innerHTML = data) //*change to use color pictures
+    .done(data => setColor(data, id))//document.getElementById(id).innerHTML = data) //**change to use color pictures
     .fail(data => console.log("failure", data))
 }
 
