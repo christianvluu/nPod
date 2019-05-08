@@ -32,6 +32,11 @@ $.post("https://api.thinger.io/oauth/token", loginParams)
 .fail( data => console.log(data))
 
 
+//sets square color for one pod
+function setColor() {
+
+}
+
 //gets a resource from a single pod and fills an html element with it
 //device name, resource to get, HTML id value
 function getPod(device, resource, id) {
