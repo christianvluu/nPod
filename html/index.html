@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>nPod</title>
 
+    <!--clean up head-->
 
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -18,54 +19,47 @@
     <!-- Bootstrap script -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
+    <script src="password.js"></script>
+
   </head>
 
   <body>
-    <script src="password.js"></script>
     <script src="script.js"></script>
     <h1 class="text-center">nPod</h1>
 
-    <button type="button" onclick="buttonClick()">click on me</button>
+    <div class="container-fluid">
 
-    <div class="container">
-      <h2>Bunn Library</h2>
-      <p>The official library of The Lawrenceville School.</p>
-      <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-              First floor
-              </a>
-            </h4>
-          </div>
-          <div id="collapse1" class="panel-collapse collapse in">
-            <img src="images/floor_plan.jpg" class="floor_plan"/>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-              Second floor</a>
-            </h4>
-          </div>
-          <div id="collapse2" class="panel-collapse collapse">
-            <img src="images/floor_plan.jpg"/>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-              Basement</a>
-            </h4>
-          </div>
-          <div id="collapse3" class="panel-collapse collapse">
-            <img src="images/floor_plan.jpg"/>
+      <!--make buttons only open one at a time?-->
+      <div class="row">
+        <div class="col text-center">
+          <div class="btn-group">
+            <button type="button" onclick="getFloor(floorB1)" class="btn btn-primary" data-toggle="collapse" data-target="#floorB1" aria-expanded="false" aria-controls="#floorB1">Basement</button>
+            <button type="button" onclick="getFloor(floor0)" class="btn btn-primary" data-toggle="collapse" data-target="#floor0" aria-expanded="false" aria-controls="#floor0">Floor 1</button>
+            <button type="button" onclick="getFloor(floor1)" class="btn btn-primary" data-toggle="collapse" data-target="#floor1" aria-expanded="false" aria-controls="#floor1">Floor 2</button>
           </div>
         </div>
       </div>
+
+      <!--Add spaces for pictures to go make them yellow for loading-->
+      <div class="row collapse" id="floorB1">
+        <div class="col text-center">
+          <img class="square" id="B1pod0" src="images/orange.jpg" alt="orange.jpg" ></img>
+          <h1>POD 1</h1>
+          <img class="square" id="B1pod1" src="images/orange.jpg" alt="orange.jpg" ></img>
+          <h1>POD 2</h1>
+        </div>
+        <div class="col">
+          ASFISDF
+        </div>
+      </div>
+      <div class="row collapse" id="floor0">
+        aaaaa
+      </div>
+      <div class="row collapse" id="floor1">
+        bbbbb
+      </div>
+
+
     </div>
 
   </body>

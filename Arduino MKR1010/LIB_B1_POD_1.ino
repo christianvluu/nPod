@@ -14,7 +14,7 @@ Change per file:
 
 //WiFi credentials
 #define SSID "LVproj"
-#define SSID_PASSWORD "18101810"
+#define SSID_PASSWORD "XXXXXXXX"
 
 //variable declaration
 int sensorPin = 5; //pir sensor pin
@@ -32,10 +32,10 @@ double timeAtMotionStart = 0;
 boolean motionToggle = true;
 
 //create Thinger device object
-ThingerWiFiNINA LIB_FLR0_POD_1("npod", "LIB_FLR0_POD_1", "CREDENTIALS_LIB_FLR0_POD_1"); //CHANGE ACCOUNT AND ID LATER
+ThingerWiFiNINA LIB_B1_POD_1("npod", "LIB_B1_POD_1", "CREDENTIALS_LIB_B1_POD_1");
 
 void wifiConnect(){ //connects device to wifi
-  LIB_FLR0_POD_1.add_wifi(SSID, SSID_PASSWORD); //change OBJ name as necessary
+  LIB_B1_POD_1.add_wifi(SSID, SSID_PASSWORD);
 }
 
 void setup() {
@@ -46,11 +46,11 @@ void setup() {
   pinMode(sensorPin, INPUT);
   pinMode(LED_BUILTIN, OUTPUT);
 
-  LIB_FLR0_POD_1["isMotion"] >> outputValue(isMotion()); //returns the 'calculated' vacant/present state with bufferTime
-  LIB_FLR0_POD_1["millis"] >> outputValue(millis()); //returns time since Arduino bootup
-  LIB_FLR0_POD_1["LEDStatus"] >> outputValue(lightLED()); //returns LED status (raw sensor status)
-  LIB_FLR0_POD_1["bufferTimePost"] << inputValue(bufferTime); //POST from Server to change bufferTime
-  LIB_FLR0_POD_1["timeSinceMotion"] >> outputValue(getTimeSinceMotion()); //returns timeSinceMotion
+  LIB_B1_POD_1["isMotion"] >> outputValue(isMotion()); //returns the 'calculated' vacant/present state with bufferTime
+  LIB_B1_POD_1["millis"] >> outputValue(millis()); //returns time since Arduino bootup
+  LIB_B1_POD_1["LEDStatus"] >> outputValue(lightLED()); //returns LED status (raw sensor status)
+  LIB_B1_POD_1["bufferTimePost"] << inputValue(bufferTime); //POST from Server to change bufferTime
+  LIB_B1_POD_1["timeSinceMotion"] >> outputValue(getTimeSinceMotion()); //returns timeSinceMotion
 
 }
 
@@ -59,7 +59,7 @@ void loop() {
     wifiConnect();
   }
 
-  LIB_FLR0_POD_1.handle(); //handles all device parameters
+  LIB_B1_POD_1.handle(); //handles all device parameters
 
   isMotion();
   lightLED();

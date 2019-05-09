@@ -1,37 +1,5 @@
-/* body {
-  background-color: lightblue;
-}
 
-h1 {
-  color: navy;
-  margin-left: 20px;
-}
-
-button {
-  padding: 0 30px;
-  line-height: 60px;
-  font-weight: bold;
-  background: salmon;
-}
-
-button:hover {
-  background: lightsalmon;
-}
-
-#buttonDiv {
-  margin: auto;
-  width: 60%;
-  float: right;
-} */
-
-.floor_plan {
-  width:600px;
-}
-
-#container {
-
-}
-
-.center {
-  text-align:
+.square {
+  height: 100px;
+  width: 100px;
 }
