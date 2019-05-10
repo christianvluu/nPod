@@ -41,14 +41,12 @@ function setSquareColor(isMotion, id) {
   }
 }
 
-//**need function to do a whole floor color
-
 //gets a resource from a single pod and fills an html element with it
 //device name, resource to get, HTML id value
 function getPod(device, resource, id) {
   var url = "https://api.thinger.io/v1/users/npod/devices/" + device + "/" + resource;
   $.get(url, {authorization: access_token})
-    .done(data => setSquareColor(data, id))
+    .done(data => setSquareColor(JSON.parse(data), id))
     .fail(data => console.log("failure", data))
 }
 
