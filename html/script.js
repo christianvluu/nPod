@@ -1,8 +1,8 @@
 
 //shortened pod names
-const podsB1 = ["LIB_FLRB1_POD_0","LIB_FLRB1_POD_1", "LIB_FLRB1_POD_2"];
-const podsF0 = ["LIB_FLR0_POD_0", "LIB_FLR0_POD_1", "LIB_FLR0_POD_2", "LIB_FLR0_POD_3"];
-const podsF1 = ["LIB_FLR1_POD_0", "LIB_FLR1_POD_1", "LIB_FLR1_POD_2", "LIB_FLR1_POD_3"];
+const podsB1 = ["LIB_B1_POD_0","LIB_B1_POD_1", "LIB_B1_POD_2"];
+const podsF0 = ["LIB_F0_POD_0", "LIB_F0_POD_1", "LIB_F0_POD_2", "LIB_F0_POD_3"];
+const podsF1 = ["LIB_F1_POD_0", "LIB_F1_POD_1", "LIB_F1_POD_2", "LIB_F1_POD_3"];
 
 //resource variables
 const millis = "millis";
@@ -33,8 +33,8 @@ $.post("https://api.thinger.io/oauth/token", loginParams)
 
 
 //sets square color for one pod
-function setColor(roomFull, id) {
-  if(roomFull){
+function setSquareColor(isMotion, id) {
+  if(isMotion){
     document.getElementById(id).src = "images/red.jpg";
   }else{
     document.getElementById(id).src = "images/green.jpg";
@@ -48,7 +48,7 @@ function setColor(roomFull, id) {
 function getPod(device, resource, id) {
   var url = "https://api.thinger.io/v1/users/npod/devices/" + device + "/" + resource;
   $.get(url, {authorization: access_token})
-    .done(data => setColor(data, id))//document.getElementById(id).innerHTML = data) //**change to use color pictures
+    .done(data => setSquareColor(data, id))
     .fail(data => console.log("failure", data))
 }
 
@@ -56,21 +56,25 @@ function getPod(device, resource, id) {
 function getFloorMotion(floor) {
   switch(floor) {
     case -1: //basement
-      for(i = 0; i < 2; i++) { //2 or 3 in basement?
-        var id = B1pod + i;
+      for(i = 0; i < 2; i++) {
+        var id = "B1pod" + i;
         getPod(podsB1[i], isMotion, id);
       }
+      break;
     case 0: //ground floor
       for(i = 0; i < 4; i++) {
-        var id = F0pod + i;
-        getPod(podsF1[i], isMotion, id);
+        var id = "F0pod" + i;
+        getPod(podsF0[i], isMotion, id);
       }
+      break;
     case 1: //second floor
       for(i = 0; i < 4; i++) {
-        var id = F1pod + i;
+        var id = "F1pod" + i;
         getPod(podsF1[i], isMotion, id);
       }
+      break;
     default: //invalid parameter
       console.log("Error - floor not valid");
+      break;
   }
 }
