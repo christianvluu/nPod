@@ -1,6 +1,6 @@
 
 //shortened pod names
-const podsB1 = ["LIB_B1_POD_0","LIB_B1_POD_1", "LIB_B1_POD_2"];
+const podsB1 = ["LIB_B1_POD_0","LIB_B1_POD_1"];
 const podsF0 = ["LIB_F0_POD_0", "LIB_F0_POD_1", "LIB_F0_POD_2", "LIB_F0_POD_3"];
 const podsF1 = ["LIB_F1_POD_0", "LIB_F1_POD_1", "LIB_F1_POD_2", "LIB_F1_POD_3"];
 
@@ -98,6 +98,6 @@ function collapseStuff(floor){
 }
 
 function floorClick(floor){
-  getFloorMotion(floor);
   collapseStuff(floor);
+  getFloorMotion(floor);
 }
