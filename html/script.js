@@ -96,3 +96,8 @@ function collapseStuff(floor){
       break;
   }
 }
+
+function floorClick(floor){
+  getFloorMotion(floor);
+  collapseStuff(floor);
+}
