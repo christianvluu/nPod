@@ -76,3 +76,23 @@ function getFloorMotion(floor) {
       break;
   }
 }
+
+function collapseStuff(floor){
+  switch(floor){
+    case -1:
+      $('#collapseB1').collapse('show')
+      $('#collapse0').collapse('hide')
+      $('#collapse1').collapse('hide')
+      break;
+    case 0:
+      $('#collapseB1').collapse('hide')
+      $('#collapse0').collapse('show')
+      $('#collapse1').collapse('hide')
+      break;
+    case 1:
+      $('#collapseB1').collapse('hide')
+      $('#collapse0').collapse('hide')
+      $('#collapse1').collapse('show')
+      break;
+  }
+}

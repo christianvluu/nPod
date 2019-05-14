@@ -29,7 +29,7 @@
 
     <div class="container-fluid">
 
-      <!--make buttons only open one at a time?-->
+      <!--make buttons only open one at a time?
       <div class="row">
         <div class="col text-center">
           <div class="btn-group">
@@ -38,8 +38,17 @@
             <button type="button" onclick="getFloorMotion(floor1)" class="btn btn-primary" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="#collapse1">Second Floor</button>
           </div>
         </div>
-      </div>
+      </div>-->
 
+      <div class="row">
+        <div class="col text-center">
+          <div class="btn-group">
+            <button type="button" onclick="collapseStuff(floorB1)" class="btn btn-primary">Basement</button>
+            <button type="button" onclick="collapseStuff(floor0)" class="btn btn-primary">Ground Floor</button>
+            <button type="button" onclick="collapseStuff(floor1)" class="btn btn-primary">Second Floor</button>
+          </div>
+        </div>
+      </div>
 
       <div class="row collapse" id="collapseB1"> <!--basement-->
         <div class="col text-center">
