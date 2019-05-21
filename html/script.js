@@ -34,9 +34,12 @@ $.post("https://api.thinger.io/oauth/token", loginParams)
 
 //sets square color for one pod
 function setSquareColor(isMotion, id) {
-  if(isMotion){
+  if(isMotion == 2){
+    document.getElementById(id).src = "images/orange.jpg";
+  }
+  if(isMotion == 1){
     document.getElementById(id).src = "images/red.jpg";
-  }else{
+  }else if(!isMotion){
     document.getElementById(id).src = "images/green.jpg";
   }
 }
@@ -47,7 +50,7 @@ function getPod(device, resource, id) {
   var url = "https://api.thinger.io/v1/users/npod/devices/" + device + "/" + resource;
   $.get(url, {authorization: access_token})
     .done(data => setSquareColor(JSON.parse(data), id))
-    .fail(data => console.log("failure", data))
+    .fail(setSquareColor(2, id))
 }
 
 //gets isMotion values for an entire floor
