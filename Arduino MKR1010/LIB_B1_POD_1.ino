@@ -27,7 +27,7 @@ int pirState = LOW; //flag variable
 
 boolean roomFull = false; //calculated vacancy
 
-int bufferTime = 10000; //milliseconds buffer
+int bufferTime = 100000; //milliseconds buffer
 unsigned long lastMotion; //reset variable
 
 double timeSinceMotion = 0;
