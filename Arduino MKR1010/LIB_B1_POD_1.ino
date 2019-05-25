@@ -15,6 +15,9 @@ Change per file:
 //WiFi credentials
 #define SSID "LVproj"
 #define SSID_PASSWORD "XXXXXXXX"
+#define DEVICE_OBJ LIB_B1_POD_1
+#define DEVICE_ID "LIB_B1_POD_1"
+#define DEVICE_CREDS "CREDENTIALS_LIB_B1_POD_1"
 
 //variable declaration
 int sensorPin = 5; //pir sensor pin
@@ -32,10 +35,10 @@ double timeAtMotionStart = 0;
 boolean motionToggle = true;
 
 //create Thinger device object
-ThingerWiFiNINA LIB_B1_POD_1("npod", "LIB_B1_POD_1", "CREDENTIALS_LIB_B1_POD_1");
+ThingerWiFiNINA DEVICE_OBJ("npod", DEVICE_ID, DEVICE_CREDS);
 
 void wifiConnect(){ //connects device to wifi
-  LIB_B1_POD_1.add_wifi(SSID, SSID_PASSWORD);
+  DEVICE_OBJ.add_wifi(SSID, SSID_PASSWORD);
 }
 
 void setup() {
@@ -46,11 +49,11 @@ void setup() {
   pinMode(sensorPin, INPUT);
   pinMode(LED_BUILTIN, OUTPUT);
 
-  LIB_B1_POD_1["isMotion"] >> outputValue(isMotion()); //returns the 'calculated' vacant/present state with bufferTime
-  LIB_B1_POD_1["millis"] >> outputValue(millis()); //returns time since Arduino bootup
-  LIB_B1_POD_1["LEDStatus"] >> outputValue(lightLED()); //returns LED status (raw sensor status)
-  LIB_B1_POD_1["bufferTimePost"] << inputValue(bufferTime); //POST from Server to change bufferTime
-  LIB_B1_POD_1["timeSinceMotion"] >> outputValue(getTimeSinceMotion()); //returns timeSinceMotion
+  DEVICE_OBJ["isMotion"] >> outputValue(isMotion()); //returns the 'calculated' vacant/present state with bufferTime
+  DEVICE_OBJ["millis"] >> outputValue(millis()); //returns time since Arduino bootup
+  DEVICE_OBJ["LEDStatus"] >> outputValue(lightLED()); //returns LED status (raw sensor status)
+  DEVICE_OBJ["bufferTimePost"] << inputValue(bufferTime); //POST from Server to change bufferTime
+  DEVICE_OBJ["timeSinceMotion"] >> outputValue(getTimeSinceMotion()); //returns timeSinceMotion
 
 }
 
@@ -59,7 +62,7 @@ void loop() {
     wifiConnect();
   }
 
-  LIB_B1_POD_1.handle(); //handles all device parameters
+  DEVICE_OBJ.handle(); //handles all device parameters
 
   isMotion();
   lightLED();
