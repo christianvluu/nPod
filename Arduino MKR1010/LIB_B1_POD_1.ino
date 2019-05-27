@@ -1,16 +1,9 @@
 #include <ThingerWiFiNINA.h>
 
-/*
+/*#############################
  * nPod 2019
  * Christian Luu and Nick Healy
- */
-
-/*#############################
-Change per file:
-- ThingerWiFiNINA Obj at creation
-- ThingerWiFiNINA Obj at wifiConnect() reference
-- Resources Output/Input Obj reference in setup()
-#############################*/
+ ##############################*/
 
 //WiFi credentials
 #define SSID "LVproj"
@@ -27,7 +20,7 @@ int pirState = LOW; //flag variable
 
 boolean roomFull = false; //calculated vacancy
 
-int bufferTime = 100000; //milliseconds buffer
+int bufferTime = 180000; //milliseconds buffer
 unsigned long lastMotion; //reset variable
 
 double timeSinceMotion = 0;
@@ -52,7 +45,7 @@ void setup() {
   DEVICE_OBJ["isMotion"] >> outputValue(isMotion()); //returns the 'calculated' vacant/present state with bufferTime
   DEVICE_OBJ["millis"] >> outputValue(millis()); //returns time since Arduino bootup
   DEVICE_OBJ["LEDStatus"] >> outputValue(lightLED()); //returns LED status (raw sensor status)
-  DEVICE_OBJ["bufferTimePost"] << inputValue(bufferTime); //POST from Server to change bufferTime
+  //DEVICE_OBJ["bufferTimePost"] << inputValue(bufferTime); //POST from Server to change bufferTime
   DEVICE_OBJ["timeSinceMotion"] >> outputValue(getTimeSinceMotion()); //returns timeSinceMotion
 
 }
