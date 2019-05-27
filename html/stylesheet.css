@@ -5,4 +5,10 @@
 }
 .btn  {
   background-color: #C13D3D;
+  border:1px solid #C15A5A;
+}
+
+.btn:hover {
+	background-color:#C10A0A;
+  border:1px solid #C15A5A;
 }
