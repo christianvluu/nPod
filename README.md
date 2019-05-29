@@ -14,5 +14,7 @@ Introducing nPod! nPod is an IoT device based on the Arduino MKR1010 microcontro
 
 ## Further Details...
 We're using thinger.io to as our IoT cloud host.
+
 The .ai Adobe Illustrator laser cutting file is designed for 1/8in material.
-Motion sensors are this model: https://www.amazon.com/dp/B012ZZ4LPM/ref=cm_sw_em_r_mt_dp_U_6fR7CbW894DP0
+
+Motion sensors are this model: https://www.amazon.com/dp/B012ZZ4LPM/ref=cm_sw_em_r_mt_dp_U_6fR7CbW894DP0.
