@@ -6,7 +6,7 @@
  ##############################*/
 
 //WiFi credentials
-#define SSID "LVproj"
+#define SSID "Lville MiFi4"
 #define SSID_PASSWORD "XXXXXXXX"
 #define DEVICE_OBJ LIB_F1_POD_0
 #define DEVICE_ID "LIB_F1_POD_0"
@@ -20,7 +20,7 @@ int pirState = LOW; //flag variable
 
 boolean roomFull = false; //calculated vacancy
 
-int bufferTime = 180000; //milliseconds buffer
+int bufferTime = 300000; //milliseconds buffer
 unsigned long lastMotion; //reset variable
 
 double timeSinceMotion = 0;
